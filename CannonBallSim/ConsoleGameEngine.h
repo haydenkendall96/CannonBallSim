@@ -18,6 +18,18 @@ Character Set -> Use Unicode. Thanks! - Javidx9
 
 class ConsoleGameEngine
 {
+protected:
+	int Error(const wchar_t* msg);
+
+	static BOOL CloseHandler(DWORD evt);
+
+	struct sKeyState
+	{
+		bool bPressed;
+		bool bReleased;
+		bool bHeld;
+	} m_keys[256], m_mouse[5];
+
 public:
 	ConsoleGameEngine();
 
@@ -35,6 +47,8 @@ public:
 
 	void FillCircle(int xc, int yc, int r, short c = 0x2588, short col = 0x000F);
 
+	void DrawRect(int x, int y, int l, int w, short c = 0x2588, short col = 0x000F);
+
 	void Start();
 
 	int ScreenWidth();
@@ -50,16 +64,12 @@ public:
 
 	~ConsoleGameEngine();
 
+	sKeyState GetKey(int nKeyID) { return m_keys[nKeyID]; }
+
 
 private:
 	void GameThread();
 	
-
-protected:
-	int Error(const wchar_t* msg);
-
-	static BOOL CloseHandler(DWORD evt);
-
 protected:
 	int m_nScreenWidth;
 	int m_nScreenHeight;

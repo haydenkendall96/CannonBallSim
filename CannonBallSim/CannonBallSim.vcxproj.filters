@@ -24,12 +24,18 @@
     <ClCompile Include="CannonBall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Land.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleGameEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CannonBall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Land.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

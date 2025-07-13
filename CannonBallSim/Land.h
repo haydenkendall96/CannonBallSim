@@ -1,11 +1,11 @@
 #pragma once
 #include "ConsoleGameEngine.h"
 
-class CannonBall
+class Land 
 {
 public:
-	CannonBall();
-	void Init(ConsoleGameEngine *engine, int x, int y, int r);
+	Land();
+	void Init(ConsoleGameEngine *engine, int x, int y, int l, int w);
 	void Draw();
 	void SetXPos(int newX);
 	int getXPos();
@@ -15,6 +15,7 @@ public:
 private:
 	int xPos;
 	int yPos;
-	int radius;
+	int length;
+	int width;
 	ConsoleGameEngine *gameEngine;
 };
