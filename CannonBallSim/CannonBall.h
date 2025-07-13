@@ -9,6 +9,8 @@ public:
 	void Draw();
 	void SetXPos(int newX);
 	int getXPos();
+	void SetYPos(int newY);
+	int getYPos();
 
 private:
 	int xPos;

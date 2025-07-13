@@ -57,12 +57,11 @@ int main()
 {
 	ConsoleGameEngine demo;
 
+	//Modify the console and start the engine
 	if (demo.ConstructConsole(256, 240, 4, 4))
 	{
 		demo.Start();
 	}
-
-	cout << "Hello World!" << endl;
 
 	return 0;
 }

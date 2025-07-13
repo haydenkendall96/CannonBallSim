@@ -23,8 +23,18 @@ int CannonBall::getXPos()
 	return xPos;
 }
 
+void CannonBall::SetYPos(int newY)
+{
+	yPos = newY;
+}
+
+int CannonBall::getYPos()
+{
+	return yPos;
+}
+
 void CannonBall::Draw()
 {
-	gameEngine -> DrawCircle(xPos, yPos, radius);
+	gameEngine -> FillCircle(xPos, yPos, radius);
 
 }

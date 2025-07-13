@@ -3,6 +3,7 @@
 #include "CannonBall.h"
 
 float fTheta;
+int gravity = 5;
 CannonBall ball;
 
 ConsoleGameEngine::ConsoleGameEngine()
@@ -379,12 +380,18 @@ bool ConsoleGameEngine::OnUserDestroy()
 	return true;
 }
 
+//Handle game logic here
 bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 {
 	Fill(0, 0, ScreenWidth(), ScreenHeight(), 0x2588, 0x0000);
 	fTheta += 1.0f * fElapsedTime;
 	
-	ball.SetXPos(ball.getXPos() + fTheta);
+
+	if (ball.getYPos() <= 228)
+	{
+		ball.SetYPos(ball.getYPos() + (gravity * fTheta));
+	}
+	
 	ball.Draw();
 
 	return true;
