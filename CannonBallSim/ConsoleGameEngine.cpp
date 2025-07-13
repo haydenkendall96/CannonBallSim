@@ -413,7 +413,7 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 	}
 	else
 	{
-		if (ball.getYPos() < 221)
+		if (ball.getYPos() < 223)
 		{
 			ball.SetYPos(ball.getYPos() + (gravity * fTheta));
 		}
