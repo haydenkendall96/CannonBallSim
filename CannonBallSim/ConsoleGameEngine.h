@@ -47,7 +47,7 @@ public:
 
 	void FillCircle(int xc, int yc, int r, short c = 0x2588, short col = 0x000F);
 
-	void DrawRect(int x, int y, int l, int w, short c = 0x2588, short col = 0x000F);
+	void DrawRect(int x, int y, int l, int w, float rot, short c = 0x2588, short col = 0x000F);
 
 	void Start();
 

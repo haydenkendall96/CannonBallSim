@@ -2,10 +2,12 @@
 #include <iostream>
 #include "CannonBall.h"
 #include "Land.h"
+#include "Cannon.h"
 
 float fTheta;
 int gravity = 5;
 CannonBall ball;
+Cannon cannon;
 Land land;
 
 ConsoleGameEngine::ConsoleGameEngine()
@@ -26,6 +28,7 @@ ConsoleGameEngine::ConsoleGameEngine()
 
 	ball.Init(this, 117, 0, 10);
 	land.Init(this, 0, 235, 10, 255);
+	cannon.Init(this, 50, 100);
 
 }
 
@@ -250,12 +253,24 @@ void ConsoleGameEngine::FillCircle(int xc, int yc, int r, short c, short col)
 	}
 }
 
-void ConsoleGameEngine::DrawRect(int x, int y, int l, int w, short c, short col)
+void ConsoleGameEngine::DrawRect(int x, int y, int l, int w, float rot, short c, short col)
 {
-	DrawLine(x, y, x + w, y);
-	DrawLine(x, y, x, y + l);
-	DrawLine(x + w, y, x + w, y + l);
-	DrawLine(x + w, y + l, x, y+l);
+	int x1 = x;
+	int y1 = y;
+
+	int x2 = x + w;
+	int y2 = y;
+
+	int x3 = x;
+	int y3 = y + l;
+
+	int x4 = x + w;
+	int y4 = y + l;
+
+	DrawLine(x1, y1, x2, y2);
+	DrawLine(x1, y1, x3, y3);
+	DrawLine(x2, y2, x4, y4);
+	DrawLine(x4, y4, x3, y3);
 }
 
 void ConsoleGameEngine::Start()
@@ -426,6 +441,7 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 	
 	ball.Draw();
 	land.Draw();
+	cannon.Draw();
 
 	return true;
 }

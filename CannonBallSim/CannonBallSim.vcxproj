@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="CannonBall.cpp" />
     <ClCompile Include="ConsoleGameEngine.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cannon.h" />
     <ClInclude Include="CannonBall.h" />
     <ClInclude Include="ConsoleGameEngine.h" />
     <ClInclude Include="Land.h" />

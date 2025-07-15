@@ -16,6 +16,6 @@ void Land::Init(ConsoleGameEngine* engine, int x, int y, int l, int w)
 
 void Land::Draw()
 {
-	gameEngine->DrawRect(getXPos(), getYPos(), length, width);
+	gameEngine->DrawRect(getXPos(), getYPos(), length, width, 0);
 
 }

@@ -9,10 +9,11 @@ public:
 	int getXPos();
 	void SetYPos(int newY);
 	int getYPos();
+	ConsoleGameEngine* gameEngine;
 
 
 private:
 	int xPos;
 	int yPos;
-	ConsoleGameEngine* gameEngine;
+	
 };
