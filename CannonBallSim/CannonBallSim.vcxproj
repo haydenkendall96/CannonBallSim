@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="CannonBall.cpp" />
     <ClCompile Include="ConsoleGameEngine.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>

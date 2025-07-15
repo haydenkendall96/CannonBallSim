@@ -1,20 +1,15 @@
 #pragma once
 #include "ConsoleGameEngine.h"
+#include "GameObject.h"
 
-class CannonBall
+class CannonBall : public GameObject
 {
 public:
 	CannonBall();
 	void Init(ConsoleGameEngine *engine, int x, int y, int r);
 	void Draw();
-	void SetXPos(int newX);
-	int getXPos();
-	void SetYPos(int newY);
-	int getYPos();
 
 private:
-	int xPos;
-	int yPos;
 	int radius;
 	ConsoleGameEngine *gameEngine;
 };
