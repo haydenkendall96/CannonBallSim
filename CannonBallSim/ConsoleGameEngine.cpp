@@ -3,8 +3,11 @@
 #include "CannonBall.h"
 #include "Land.h"
 #include "Cannon.h"
+#include <sstream>
+#include <string>
 
 float fTheta;
+float fDegree = 0;
 int gravity = 5;
 CannonBall ball;
 Cannon cannon;
@@ -253,24 +256,50 @@ void ConsoleGameEngine::FillCircle(int xc, int yc, int r, short c, short col)
 	}
 }
 
-void ConsoleGameEngine::DrawRect(int x, int y, int l, int w, float rot, short c, short col)
+void ConsoleGameEngine::DrawRect(float x, float y, float l, float w, float rot, short c, short col)
 {
-	int x1 = x;
-	int y1 = y;
+	float x1 = TransformRect(x - (w/2), y - (l/2), x, y, rot, true);
+	float y1 = TransformRect(x - (w/2), y - (l/2), x, y, rot, false);
 
-	int x2 = x + w;
-	int y2 = y;
+	float x2 = TransformRect(x + (w / 2), y - (l / 2), x, y, rot, true);
+	float y2 = TransformRect(x + (w / 2), y - (l / 2), x, y, rot, false);
 
-	int x3 = x;
-	int y3 = y + l;
+	float x3 = TransformRect(x + (w/2), y + (l/2), x, y, rot, true);
+	float y3 = TransformRect( x + (w/2), y + (l/2), x, y, rot, false);
 
-	int x4 = x + w;
-	int y4 = y + l;
+	float x4 = TransformRect(x - (w/2), y + (l/2), x, y, rot, true);
+	float y4 = TransformRect(x - (w/2), y + (l/2), x, y, rot, false);
 
 	DrawLine(x1, y1, x2, y2);
-	DrawLine(x1, y1, x3, y3);
-	DrawLine(x2, y2, x4, y4);
-	DrawLine(x4, y4, x3, y3);
+	DrawLine(x2, y2, x3, y3);
+	DrawLine(x3, y3, x4, y4);
+	DrawLine(x4, y4, x1, y1);
+
+}
+
+float ConsoleGameEngine::TransformRect(float x, float y, float xOrigin, float yOrigin, float rot, bool isX)
+{
+	float output;
+	float rad = rot * (3.1415f / 180.0f);
+
+	float oSin = sinf(rad);
+	float oCos = cosf(rad);
+
+	float centeredX = x - xOrigin;
+	float centeredY = y - yOrigin;
+
+	if (isX)
+	{
+		output = (centeredX * oCos) + (centeredY * -oSin) + xOrigin;
+
+	}
+	else
+	{
+		output = (centeredX * oSin) + (centeredY * oCos) + yOrigin;
+	}
+
+	return std::round(output);
+	
 }
 
 void ConsoleGameEngine::Start()
@@ -438,10 +467,15 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 	{
 		fTheta = 0;
 	}
+
+	if (m_keys[VK_RIGHT].bPressed)
+	{
+		fDegree += 10;
+	}
 	
 	ball.Draw();
 	land.Draw();
-	cannon.Draw();
+	cannon.Draw(fDegree);
 
 	return true;
 }

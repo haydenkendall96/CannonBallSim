@@ -6,9 +6,8 @@ class Cannon : public GameObject
 public:
 	Cannon();
 	void Init(ConsoleGameEngine* engine, int x, int y);
-	void Draw();
+	void Draw(int rotation);
 private:
-	int degree;
 	int length;
 	int width;
 

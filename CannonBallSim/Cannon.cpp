@@ -10,15 +10,13 @@ void Cannon::Init(ConsoleGameEngine* engine, int x, int y)
 	SetXPos(x);
 	SetYPos(y);
 	gameEngine = engine;
-	degree = 45;
-	length = 25;
-	width = 10;
-
+	length = 10;
+	width = 20;
 }
 
-void Cannon::Draw()
+void Cannon::Draw(int rotation)
 {
 
-	gameEngine->DrawRect(10, 10, length, width, -45);
+	gameEngine->DrawRect(getXPos(), getYPos(), length, width, rotation);
 
 }
