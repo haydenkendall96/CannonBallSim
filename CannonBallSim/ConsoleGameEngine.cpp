@@ -30,8 +30,8 @@ ConsoleGameEngine::ConsoleGameEngine()
 	m_sAppName = L"Default";
 
 	ball.Init(this, 117, 0, 10);
-	land.Init(this, 0, 235, 10, 255);
-	cannon.Init(this, 50, 100);
+	land.Init(this, 128, 235, 10, 254);
+	cannon.Init(this, 30, 217);
 
 }
 
@@ -442,15 +442,6 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 	Fill(0, 0, ScreenWidth(), ScreenHeight(), 0x2588, 0x0000);
 	fTheta += 1.0f * fElapsedTime;
 
-	if (m_keys[VK_LEFT].bHeld)
-	{
-		ball.SetXPos(ball.getXPos() - 1);
-	}
-	if (m_keys[VK_RIGHT].bHeld)
-	{
-		ball.SetXPos(ball.getXPos() + 1);
-	}
-
 	if (m_keys[VK_UP].bHeld && ball.getYPos() > 10)
 	{
 		ball.SetYPos(ball.getYPos() - 1);
@@ -468,9 +459,23 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 		fTheta = 0;
 	}
 
+	if (m_keys[VK_LEFT].bPressed)
+	{
+		if (fDegree > -45)
+		{
+			fDegree -= 5;
+		}
+		
+
+	}
+
 	if (m_keys[VK_RIGHT].bPressed)
 	{
-		fDegree += 10;
+		if (fDegree < 0)
+		{
+			fDegree += 5;
+		}
+		
 	}
 	
 	ball.Draw();
