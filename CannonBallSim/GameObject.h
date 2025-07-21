@@ -6,9 +6,9 @@ class GameObject
 public:
 	GameObject();
 	void SetXPos(int newX) { xPos = newX; };
-	int getXPos() { return xPos;  };
+	int GetXPos() { return xPos;  };
 	void SetYPos(int newY) { yPos = newY; };
-	int getYPos() { return yPos; };
+	int GetYPos() { return yPos; };
 	bool isInit = false;
 	ConsoleGameEngine* gameEngine;
 
@@ -16,7 +16,7 @@ public:
 private:
 	int xPos;
 	int yPos;
-	int velX;
-	int velY;
+	float velX;
+	float velY;
 	
 };

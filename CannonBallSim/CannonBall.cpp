@@ -20,9 +20,9 @@ void CannonBall::Draw(int gravity, float angle, float fTheta)
 	float deltaTime = fTheta - startTime;
 	float deltaChange = (gravity * deltaTime);
 
-	SetYPos(getYPos() + (gravity * deltaChange));
-	SetXPos(getXPos() + (gravity * deltaChange));
+	SetYPos(GetYPos() + (gravity * deltaChange));
+	SetXPos(GetXPos() + (gravity * deltaChange));
 
-	gameEngine -> FillCircle(getXPos(), getYPos(), radius);
+	gameEngine -> FillCircle(GetXPos(), GetYPos(), radius);
 
 }

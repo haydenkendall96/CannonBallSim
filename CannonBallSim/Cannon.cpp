@@ -18,7 +18,7 @@ void Cannon::Init(ConsoleGameEngine* engine, int x, int y)
 void Cannon::Draw(int rotation)
 {
 
-	gameEngine->DrawRect(getXPos(), getYPos(), length, width, rotation);
-	gameEngine->FillCircle(getXPos()-(width/6), getYPos() + (length/2), 7);
+	gameEngine->DrawRect(GetXPos(), GetYPos(), length, width, rotation);
+	gameEngine->FillCircle(GetXPos()-(width/6), GetYPos() + (length/2), 7);
 
 }

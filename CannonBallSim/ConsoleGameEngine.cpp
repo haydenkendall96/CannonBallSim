@@ -464,7 +464,7 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 	
 	if (m_keys[VK_SPACE].bPressed)
 	{
-		ball.Init(this, cannon.getXPos(), cannon.getYPos(), 2, fTheta);
+		ball.Init(this, cannon.GetXPos(), cannon.GetYPos(), 2, fTheta);
 	}
 
 	if (ball.isInit)
