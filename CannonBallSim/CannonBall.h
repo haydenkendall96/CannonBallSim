@@ -14,6 +14,7 @@ class CannonBall : public GameObject
 private:
 	int radius; //The radius of the ball.
 	float startTime; //The time of initialization. 
+	float initVel;
 
 public:
 	/**
@@ -33,8 +34,9 @@ public:
 	 * @param r - The radius of the ball.
 	 * @param sTime - The time of initialization. 
 	 * @param angle - The angle of initial velocity. 
+	 * @param initVel = The initial velocity.
 	 */
-	void Init(ConsoleGameEngine *engine, float x, float y, int r, float sTime, float angle);
+	void Init(ConsoleGameEngine *engine, float x, float y, int r, float sTime, float angle, float initVel);
 
 	/**
 	 * @brief

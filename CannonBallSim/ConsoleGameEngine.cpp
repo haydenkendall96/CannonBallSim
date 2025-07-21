@@ -467,7 +467,7 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 		float yPos = TransformPoint(cannon.GetXPos() + (cannon.GetWidth() / 2.0f), cannon.GetYPos(), cannon.GetXPos(), cannon.GetYPos(), fDegree, false);
 		float xPos = TransformPoint(cannon.GetXPos() + (cannon.GetWidth() / 2.0f), cannon.GetYPos(), cannon.GetXPos(), cannon.GetYPos(), fDegree, true);
 
-		ball.Init(this, xPos, yPos, 2, fTheta, fDegree);
+		ball.Init(this, xPos, yPos, 2, fTheta, fDegree, 2.25f);
 	}
 
 	if (ball.isInit)

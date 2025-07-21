@@ -5,10 +5,9 @@ using namespace std;
 
 CannonBall::CannonBall(){}
 
-void CannonBall::Init(ConsoleGameEngine *engine, float x, float y, int r, float sTime, float angle)
+void CannonBall::Init(ConsoleGameEngine* engine, float x, float y, int r, float sTime, float angle, float initVel)
 {
 	isInit = true; //TODO: See if there is a better way to implement this.
-	float initVel = 2.25f;
 
 	SetXPos(x);
 	SetYPos(y);
