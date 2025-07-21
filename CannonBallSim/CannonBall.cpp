@@ -5,23 +5,39 @@ using namespace std;
 
 CannonBall::CannonBall(){}
 
-void CannonBall::Init(ConsoleGameEngine *engine, int x, int y, int r, float sTime)
+void CannonBall::Init(ConsoleGameEngine *engine, float x, float y, int r, float sTime, float angle)
 {
 	isInit = true; //TODO: See if there is a better way to implement this.
+	float initVel = 2.25f;
+
 	SetXPos(x);
 	SetYPos(y);
+	SetXVel(initVel * cosf(angle * (3.1415f / 180.0f)));
+	SetYVel(initVel * sinf(angle * (3.1415f / 180.0f)));
 	radius = r;
 	gameEngine = engine;
-	startTime = 1.0f * sTime;
+	startTime = sTime;
 }
 
-void CannonBall::Draw(int gravity, float angle, float fTheta)
+//Calculates the motion of the object and draws the result to the screen.
+void CannonBall::Draw(float gravity, float fTheta)
 {
-	float deltaTime = fTheta - startTime;
-	float deltaChange = (gravity * deltaTime);
+	float deltaTime = 1.0f + (fTheta - startTime);
+	float delatTimeSq = deltaTime * deltaTime;
 
-	SetYPos(GetYPos() + (gravity * deltaChange));
-	SetXPos(GetXPos() + (gravity * deltaChange));
+	if (GetYPos() < 230)
+	{
+		SetXPos(GetXPos() + GetXVel() * deltaTime);
+
+		SetYVel(GetYVel() + (gravity * deltaTime));
+
+		SetYPos(GetYPos() + (GetYVel() * deltaTime) + (0.5f * gravity * delatTimeSq));
+	}
+	else
+	{
+		SetYVel(0);
+		SetYPos(230);
+	}
 
 	gameEngine -> FillCircle(GetXPos(), GetYPos(), radius);
 

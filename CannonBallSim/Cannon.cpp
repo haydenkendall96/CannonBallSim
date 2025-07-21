@@ -5,7 +5,7 @@ using namespace std;
 
 Cannon::Cannon() {}
 
-void Cannon::Init(ConsoleGameEngine* engine, int x, int y)
+void Cannon::Init(ConsoleGameEngine* engine, float x, float y)
 {
 	isInit = true;
 	SetXPos(x);
@@ -13,12 +13,14 @@ void Cannon::Init(ConsoleGameEngine* engine, int x, int y)
 	gameEngine = engine;
 	length = 10;
 	width = 35;
+	lengthDivisor = 2;
+	wheelRadius = 7;
 }
 
 void Cannon::Draw(int rotation)
 {
 
 	gameEngine->DrawRect(GetXPos(), GetYPos(), length, width, rotation);
-	gameEngine->FillCircle(GetXPos()-(width/6), GetYPos() + (length/2), 7);
+	gameEngine->FillCircle(GetXPos(), GetYPos() + (length/ lengthDivisor), wheelRadius);
 
 }

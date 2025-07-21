@@ -8,7 +8,7 @@
 
 float fTheta;
 float fDegree = 0;
-int gravity = 5;
+float gravity = 0.03f;
 CannonBall ball;
 Cannon cannon;
 Land land;
@@ -257,17 +257,17 @@ void ConsoleGameEngine::FillCircle(int xc, int yc, int r, short c, short col)
 
 void ConsoleGameEngine::DrawRect(float x, float y, float l, float w, float rot, short c, short col)
 {
-	float x1 = TransformRect(x - (w/2), y - (l/2), x, y, rot, true);
-	float y1 = TransformRect(x - (w/2), y - (l/2), x, y, rot, false);
+	float x1 = TransformPoint(x - (w/2), y - (l/2), x, y, rot, true);
+	float y1 = TransformPoint(x - (w/2), y - (l/2), x, y, rot, false);
 
-	float x2 = TransformRect(x + (w / 2), y - (l / 2), x, y, rot, true);
-	float y2 = TransformRect(x + (w / 2), y - (l / 2), x, y, rot, false);
+	float x2 = TransformPoint(x + (w / 2), y - (l / 2), x, y, rot, true);
+	float y2 = TransformPoint(x + (w / 2), y - (l / 2), x, y, rot, false);
 
-	float x3 = TransformRect(x + (w/2), y + (l/2), x, y, rot, true);
-	float y3 = TransformRect( x + (w/2), y + (l/2), x, y, rot, false);
+	float x3 = TransformPoint(x + (w/2), y + (l/2), x, y, rot, true);
+	float y3 = TransformPoint( x + (w/2), y + (l/2), x, y, rot, false);
 
-	float x4 = TransformRect(x - (w/2), y + (l/2), x, y, rot, true);
-	float y4 = TransformRect(x - (w/2), y + (l/2), x, y, rot, false);
+	float x4 = TransformPoint(x - (w/2), y + (l/2), x, y, rot, true);
+	float y4 = TransformPoint(x - (w/2), y + (l/2), x, y, rot, false);
 
 	DrawLine(x1, y1, x2, y2);
 	DrawLine(x2, y2, x3, y3);
@@ -276,7 +276,7 @@ void ConsoleGameEngine::DrawRect(float x, float y, float l, float w, float rot, 
 
 }
 
-float ConsoleGameEngine::TransformRect(float x, float y, float xOrigin, float yOrigin, float rot, bool isX)
+float ConsoleGameEngine::TransformPoint(float x, float y, float xOrigin, float yOrigin, float rot, bool isX)
 {
 	float output;
 	float rad = rot * (3.1415f / 180.0f);
@@ -448,7 +448,7 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 
 	if (m_keys[VK_UP].bPressed)
 	{
-		if (fDegree > -45)
+		if (fDegree > -90)
 		{
 			fDegree -= 5;
 		}
@@ -464,12 +464,15 @@ bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 	
 	if (m_keys[VK_SPACE].bPressed)
 	{
-		ball.Init(this, cannon.GetXPos(), cannon.GetYPos(), 2, fTheta);
+		float yPos = TransformPoint(cannon.GetXPos() + (cannon.GetWidth() / 2.0f), cannon.GetYPos(), cannon.GetXPos(), cannon.GetYPos(), fDegree, false);
+		float xPos = TransformPoint(cannon.GetXPos() + (cannon.GetWidth() / 2.0f), cannon.GetYPos(), cannon.GetXPos(), cannon.GetYPos(), fDegree, true);
+
+		ball.Init(this, xPos, yPos, 2, fTheta, fDegree);
 	}
 
 	if (ball.isInit)
 	{
-		ball.Draw(gravity, fDegree, fTheta);
+		ball.Draw(gravity, fTheta);
 	}
 
 

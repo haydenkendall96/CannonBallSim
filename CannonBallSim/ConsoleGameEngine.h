@@ -48,7 +48,7 @@ public:
 	void FillCircle(int xc, int yc, int r, short c = 0x2588, short col = 0x000F);
 
 	void DrawRect(float x, float y, float l, float w, float rot, short c = 0x2588, short col = 0x000F);
-	float TransformRect(float x, float y, float xOrigin, float yOrigin, float rot, bool isX);
+	float TransformPoint(float x, float y, float xOrigin, float yOrigin, float rot, bool isX);
 
 	void Start();
 
