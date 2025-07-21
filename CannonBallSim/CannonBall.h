@@ -6,9 +6,10 @@ class CannonBall : public GameObject
 {
 public:
 	CannonBall();
-	void Init(ConsoleGameEngine *engine, int x, int y, int r);
-	void Draw();
+	void Init(ConsoleGameEngine *engine, int x, int y, int r, float sTime);
+	void Draw(int gravity, float fDegree, float fTheta);
 
 private:
 	int radius;
+	float startTime;
 };

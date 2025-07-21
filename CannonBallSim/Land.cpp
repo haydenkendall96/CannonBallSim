@@ -7,6 +7,7 @@ Land::Land() {}
 
 void Land::Init(ConsoleGameEngine* engine, int x, int y, int l, int w)
 {
+	isInit = true;
 	SetXPos(x);
 	SetYPos(y);
 	length = l;

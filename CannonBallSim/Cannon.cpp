@@ -7,6 +7,7 @@ Cannon::Cannon() {}
 
 void Cannon::Init(ConsoleGameEngine* engine, int x, int y)
 {
+	isInit = true;
 	SetXPos(x);
 	SetYPos(y);
 	gameEngine = engine;

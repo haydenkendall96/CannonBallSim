@@ -29,7 +29,6 @@ ConsoleGameEngine::ConsoleGameEngine()
 
 	m_sAppName = L"Default";
 
-	ball.Init(this, 117, 0, 10);
 	land.Init(this, 128, 235, 10, 254);
 	cannon.Init(this, 30, 217);
 
@@ -439,48 +438,40 @@ bool ConsoleGameEngine::OnUserDestroy()
 //Handle sim logic here
 bool ConsoleGameEngine::OnUserUpdate(float fElapsedTime)
 {
+	//Set up the enviroment
 	Fill(0, 0, ScreenWidth(), ScreenHeight(), 0x2588, 0x0000);
 	fTheta += 1.0f * fElapsedTime;
 
-	if (m_keys[VK_UP].bHeld && ball.getYPos() > 10)
-	{
-		ball.SetYPos(ball.getYPos() - 1);
-	}
-	else
-	{
-		if (ball.getYPos() < 223)
-		{
-			ball.SetYPos(ball.getYPos() + (gravity * fTheta));
-		}
-	}
+	//Set up objects
+	land.Draw();
+	cannon.Draw(fDegree);
 
-	if (m_keys[VK_UP].bReleased)
-	{
-		fTheta = 0;
-	}
-
-	if (m_keys[VK_LEFT].bPressed)
+	if (m_keys[VK_UP].bPressed)
 	{
 		if (fDegree > -45)
 		{
 			fDegree -= 5;
 		}
-		
-
 	}
 
-	if (m_keys[VK_RIGHT].bPressed)
+	if (m_keys[VK_DOWN].bPressed)
 	{
 		if (fDegree < 0)
 		{
 			fDegree += 5;
 		}
-		
 	}
 	
-	ball.Draw();
-	land.Draw();
-	cannon.Draw(fDegree);
+	if (m_keys[VK_SPACE].bPressed)
+	{
+		ball.Init(this, cannon.getXPos(), cannon.getYPos(), 2, fTheta);
+	}
+
+	if (ball.isInit)
+	{
+		ball.Draw(gravity, fDegree, fTheta);
+	}
+
 
 	return true;
 }
